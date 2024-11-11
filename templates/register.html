@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            background-color: #87CEFA;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #2F4F4F;
+        }
+        .register-form {
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        .register-form label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+            color: #2F4F4F;
+        }
+        .register-form input[type="text"],
+        .register-form input[type="email"],
+        .register-form input[type="password"],
+        .register-form select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        .register-form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #2F4F4F;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .register-form input[type="submit"]:hover {
+            background-color: #1E2E2E;
+        }
+        .message {
+            text-align: center;
+            color: red;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #2F4F4F;
+            color: white;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>Register</h2>
+    <div class="register-form">
+        <form method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="password">Password:</label>
+        <div style="position: relative;">
+            <input type="password" id="password" name="password" required>
+            <span id="toggle-password" onclick="togglePassword('password', 'toggle-password')"
+                  style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                👁️
+            </span>
+        </div>
+        <br><br>
+
+        <label for="confirm_password">Confirm Password:</label>
+        <div style="position: relative;">
+            <input type="password" id="confirm_password" name="confirm_password" required>
+            <span id="toggle-confirm-password" onclick="togglePassword('confirm_password', 'toggle-confirm-password')"
+                  style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                👁️
+            </span>
+        </div>
+        <br><br>
+
+            <label for="membership">Membership:</label>
+            <select id="membership" name="membership">
+                <option value="Gloryland SDA Church">Gloryland SDA Church</option>
+                <option value="Family Fellowship Sabbath School">Family Fellowship Sabbath School</option>
+                <option value="Sabbath School Member">Sabbath School Member</option>
+                <option value="Visitor">Visitor</option>
+            </select><br><br>
+
+            <input type="submit" value="Register">
+        </form>
+        <div class="message">
+            <p>{{ get_flashed_messages()[0] if get_flashed_messages() else '' }}</p>
+        </div>
+    </div>
+    <script>
+function togglePassword(passwordFieldId, togglePasswordId) {
+    const passwordField = document.getElementById(passwordFieldId);
+    const togglePassword = document.getElementById(togglePasswordId);
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        togglePassword.textContent = '🙈';
+    } else {
+        passwordField.type = 'password';
+        togglePassword.textContent = '👁️';
+    }
+}
+</script>
+    <footer>
+        &copy; 2024 Gloryland. All Rights Reserved.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            background-color: #87CEFA;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+            color: #2F4F4F;
+        }
+        .login-form {
+            max-width: 400px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        .login-form label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+            color: #2F4F4F;
+        }
+        .login-form input[type="text"],
+        .login-form input[type="email"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1.1em;
+            box-sizing: border-box;
+        }
+        .login-form input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #2F4F4F;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .login-form input[type="submit"]:hover {
+            background-color: #1E2E2E;
+        }
+        .message {
+            text-align: center;
+            color: red;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #2F4F4F;
+            color: white;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>Login</h2>
+    <div class="login-form">
+    <form id="top-login-form" method="POST" action="{{ url_for('login') }}">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <div style="position: relative;">
+        <input type="password" name="password" id="top-password" placeholder="Password" required>
+        <span id="top-toggle-password" onclick="togglePassword('top-password', 'top-toggle-password')"
+              style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+            👁️
+        </span>
+    </div>
+        <input type="submit" value="Login">
+    </form>
+             <script>
+function togglePassword(passwordFieldId, toggleButtonId) {
+    const passwordField = document.getElementById(passwordFieldId);
+    const toggleButton = document.getElementById(toggleButtonId);
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        toggleButton.textContent = '🙈';
+    } else {
+        passwordField.type = 'password';
+        toggleButton.textContent = '👁️';
+    }
+}
+</script>
+
+</div>
+
+           <div class="message">
+            <p>{{ get_flashed_messages()[0] if get_flashed_messages() else '' }}</p>
+        </div>
+    </div>
+    <footer>
+        &copy; 2024 Gloryland. All Rights Reserved.
+    </footer>
+</body>
+</html>

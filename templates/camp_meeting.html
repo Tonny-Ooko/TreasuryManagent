@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camp Meeting and Development Offering</title>
+    <style>
+        body {
+            background-color: #87CEFA;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        nav {
+            background-color: #2F4F4F;
+            padding: 15px;
+            text-align: center;
+        }
+        nav a {
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        nav button {
+            background-color: #fff;
+            color: #2F4F4F;
+            border: 1px solid #2F4F4F;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        nav button:hover {
+            background-color: #e0e0e0;
+        }
+        .section-title {
+            background-color: #4682B4;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
+            margin: 0;
+            border-bottom: 5px solid #2F4F4F;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        select {
+            width: calc(100% - 22px); /* Adjusted for padding and border */
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        small {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group.total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .total label {
+            margin-bottom: 0;
+            flex: 1;
+            text-align: right;
+            font-weight: bold;
+        }
+        .total input {
+            width: auto;
+            flex: 1;
+            text-align: right;
+        }
+        .submit-btn {
+            width: 100%;
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #2F4F4F;
+            color: white;
+            width: 100%;
+            margin-top: auto;
+        }
+    </style>
+    <script>
+        function calculateTotal() {
+            const campOffering = parseFloat(document.getElementById('camp_offering').value) || 0;
+            const campExpenses = parseFloat(document.getElementById('camp_expenses').value) || 0;
+            const churchBuildingDevelopment = parseFloat(document.getElementById('church_building_development').value) || 0;
+            const localChurchBudgetAemr = parseFloat(document.getElementById('local_church_budget_aemr').value) || 0;
+            const total = campOffering + campExpenses + churchBuildingDevelopment + localChurchBudgetAemr;
+            document.getElementById('total').value = total.toFixed(2);
+        }
+    </script>
+</head>
+<body>
+    <nav>
+        <a href="/welfare-registration"><button>Welfare Registration</button></a>
+        <a href="/camp_meeting"><button>Camp Meeting and Development Offering</button></a>
+         <a href="/evangelism-offerings"><button>Evangelism Offerings</button></a>
+    </nav>
+    <div class="section-title">
+        Camp Meeting and Development Offering
+    </div>
+    <div class="container">
+        <form method="POST">
+            <div class="form-group">
+                <label for="mpesa_phone">Mpesa Phone Number</label>
+                <input type="text" id="mpesa_phone" name="mpesa_phone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="camp_offering">Camp Offering</label>
+                <small>Supports worldwide mission activities, conference evangelism, and institutional development projects.</small>
+                <input type="text" id="camp_offering" name="camp_offering" oninput="calculateTotal()">
+            </div>
+
+            <div class="form-group">
+                <label for="camp_expenses">Camp Expenses</label>
+                <small>Meets the cost of camp meeting event.</small>
+                <input type="text" id="camp_expenses" name="camp_expenses" oninput="calculateTotal()">
+            </div>
+
+            <div class="form-group">
+                <label for="church_building_development">Church Building / Development</label>
+                <small>Select the group you belong to:</small>
+                <select id="amo_awmo_ambassador_children" name="amo_awmo_ambassador_children">
+                    <option value="AMO">AMO</option>
+                    <option value="Adventist Women Ministry">Adventist Women Ministry</option>
+                    <option value="Ambassador">Ambassador</option>
+                    <option value="Children">Children</option>
+                </select>
+                <input type="text" id="church_building_development" name="church_building_development" oninput="calculateTotal()">
+            </div>
+
+            <div class="form-group">
+                <label for="cluster_range">Cluster Range</label>
+                <select id="cluster_range" name="cluster_range">
+                    <option value="1">Cluster 1</option>
+                    <option value="2">Cluster 2</option>
+                    <option value="3">Cluster 3</option>
+                    <option value="4">Cluster 4</option>
+                    <option value="5">Cluster 5</option>
+                    <option value="6">Cluster 6</option>
+                    <option value="7">Cluster 7</option>
+                    <option value="8">Cluster 8</option>
+                    <option value="9">Cluster 9</option>
+                    <option value="10">Cluster 10</option>
+                    <option value="11">Cluster 11</option>
+                    <option value="12">Cluster 12</option>
+                    <option value="13">Cluster 13</option>
+                    <option value="14">Cluster 14</option>
+                    <option value="15">Cluster 15</option>
+                    <option value="16">Cluster 16</option>
+                    <option value="17">Cluster 17</option>
+                    <option value="18">Cluster 18</option>
+                    <option value="19">Cluster 19</option>
+                    <option value="20">Cluster 20</option>
+                    <option value="Guest">Guest</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="local_church_budget_aemr">Local Church Budget(LCB) / Annual Every Member Response (AEMR)</label>
+                <small>Supports the local church congregation and its ministries, outreach programs, utilities, repairs, and maintenance.</small>
+                <input type="text" id="local_church_budget_aemr" name="local_church_budget_aemr" oninput="calculateTotal()">
+            </div>
+
+            <div class="form-group total">
+                <label for="total">Total</label>
+                <input type="text" id="total" name="total" readonly>
+            </div>
+
+            <button type="submit" class="submit-btn">Mpesa Express</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2024 Gloryland. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evangelism Offerings</title>
+    <style>
+        body {
+            background-color: #87CEFA;
+            /* Light Blue Background */
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: #2F4F4F;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar h2 {
+            margin: 0;
+        }
+
+        .navbar .nav-button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .navbar .nav-button:hover {
+            background-color: #218838;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1.title {
+            color: #2F4F4F;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        h1.form-title {
+            text-align: center;
+            color: #2F4F4F;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .modern-amount {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .modern-amount input[type="text"] {
+            margin-left: 10px;
+            flex: 1;
+        }
+
+        .total {
+            font-weight: bold;
+            text-align: right;
+            margin-top: 15px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: #28a745;
+            /* Green button */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #2F4F4F;
+            color: white;
+            margin-top: auto;
+        }
+    </style>
+    <script>
+        function calculateTotal() {
+            const churchEvangelism = parseFloat(document.getElementById('church_evangelism').value) || 0;
+            const conferenceEvangelism = parseFloat(document.getElementById('conference_evangelism').value) || 0;
+            const stationFund = parseFloat(document.getElementById('station_fund').value) || 0;
+            const others = parseFloat(document.getElementById('others').value) || 0;
+            const total = churchEvangelism + conferenceEvangelism + stationFund + others;
+            document.getElementById('total').value = total.toFixed(2);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="navbar">
+        <a href="/register" class="nav-button">Register for Evangelism Training</a>
+    </div>
+
+    <h1 class="title">Evangelism Offerings</h1>
+
+    <div class="container">
+        <h1 class="form-title">Offerings Form</h1>
+        <form method="POST">
+            <label for="mpesa_phone">Mpesa Phone Number</label>
+            <input type="text" id="mpesa_phone" name="mpesa_phone" required>
+
+            <label for="church_evangelism">Church Evangelism</label>
+            <input type="text" id="church_evangelism" name="church_evangelism" oninput="calculateTotal()">
+
+            <label for="conference_evangelism">Conference Evangelism</label>
+            <input type="text" id="conference_evangelism" name="conference_evangelism" oninput="calculateTotal()">
+
+            <label for="station_fund">Station Fund (Ksh. 200)</label>
+            <div class="modern-amount">
+                <input type="text" id="station_fund" name="station_fund" value="200" oninput="calculateTotal()">
+            </div>
+
+            <label for="others">Others</label>
+            <input type="text" id="others" name="others" oninput="calculateTotal()">
+
+            <div class="total">
+                <label for="total">Total Giving</label>
+                <input type="text" id="total" name="total" readonly>
+            </div>
+
+            <button type="submit" class="submit-btn">Mpesa Express</button>
+        </form>
+    </div>
+
+    <footer>
+        &copy; 2024 Gloryland. All Rights Reserved.
+    </footer>
+</body>
+
+</html>

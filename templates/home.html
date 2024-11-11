@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Gloryland</title>
+    <style>
+        body {
+            background-color: #87CEFA;
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+         .message {
+            color: red;
+            margin-top: 10px;
+        }
+        header {
+            padding: 20px;
+            text-align: center;
+            background-color: #2F4F4F;
+            color: white;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .login-register {
+            float: right;
+            margin-top: -50px;
+            margin-right: 20px;
+        }
+        .login-register a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 1.2em;
+        }
+        main {
+            text-align: center;
+            padding: 20px;
+            flex: 1;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            max-width: 600px;
+        }
+        .offering {
+            font-size: 1.5em;
+            margin: 20px 0;
+            color: #2F4F4F;
+        }
+        .login-form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+        .login-form input[type="text"],
+        .login-form input[type="email"],
+        .login-form input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .login-form input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #2F4F4F;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        .login-form input[type="submit"]:hover {
+            background-color: #1E2E2E;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #2F4F4F;
+            color: white;
+            width: 100%;
+            margin-top: auto;
+        }
+         .login-form .message {
+            color: red;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Gloryland</h1>
+        <div class="login-register">
+            <a href="{{ url_for('login') }}">Login</a> |
+            <a href="{{ url_for('register') }}">Register</a>
+        </div>
+    </header>
+    <main>
+        <img src="{{ url_for('static', filename='gloryland.png') }}" alt="Gloryland Image">
+        <div class="offering">Offering</div>
+        <div class="login-form">
+    <form id="middle-login-form" class="login-form" method="POST" action="{{ url_for('login') }}">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <div style="position: relative;">
+            <input type="password" name="password" id="middle-password" placeholder="Password" required>
+            <span id="middle-toggle-password" onclick="togglePassword('middle-password', 'middle-toggle-password')"
+                  style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                👁️
+            </span>
+        </div>
+        <input type="hidden" name="from_homepage" value="true">  <!-- Hidden input to indicate homepage form -->
+        <input type="submit" value="Login">
+        <div class="message">
+            <p>{{ get_flashed_messages()[0] if get_flashed_messages() else '' }}</p>
+        </div>
+    </form>
+    <script>
+        function togglePassword(passwordFieldId, togglePasswordId) {
+            const passwordField = document.getElementById(passwordFieldId);
+            const togglePassword = document.getElementById(togglePasswordId);
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                togglePassword.textContent = '🙈';
+            } else {
+                passwordField.type = 'password';
+                togglePassword.textContent = '👁️';
+            }
+        }
+    </script>
+        </div>
+    </main>
+    <footer>
+        &copy; 2024 Gloryland. All Rights Reserved.
+    </footer>
+</body>
+</html>
